@@ -18,10 +18,8 @@ headers = {"Authorization": "Bearer " + access_token, 'Content-type':'applicatio
 #import itertools   
    
 
-dictionary_num = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}
-
-for numbers in dictionary_num:
-        req = requests.get("https://osu.ppy.sh/api/v2/rankings/osu/performance", params={"mode": "osu", "type": "performance", "response-type":"code", "cursor[page]":f"{numbers}"}, headers={"Authorization": f"Bearer {access_token}", 'Content-type':'application/json','Accept':"application/json"})
+for i in range(20):
+        req = requests.get("https://osu.ppy.sh/api/v2/rankings/osu/performance", params={"mode": "osu", "type": "performance", "response-type":"code", "cursor[page]":f"{i}"}, headers={"Authorization": f"Bearer {access_token}", 'Content-type':'application/json','Accept':"application/json"})
         request_content = req.content
         actual_content = json.loads(request_content)
        # actual_content = json.dumps(actual_content).replace('\'', "\"").replace("True", "\"True\"").replace("False", "\"False\"").replace("None", "\"None\"")
